@@ -21,6 +21,7 @@ import kotlin.math.max
 
 
 typealias SpeedTextListener = (speed: Float) -> CharSequence
+typealias AnimationEndListener = () -> Unit
 
 /**
  * this Library build By Anas Altair
@@ -153,6 +154,8 @@ abstract class Gauge constructor(
             checkTrembleData()
         }
 
+    var animationEndListener: AnimationEndListener = { }
+
     private var speedAnimator: ValueAnimator? = null
     private var trembleAnimator: ValueAnimator? = null
     private var realSpeedAnimator: ValueAnimator? = null
@@ -171,8 +174,10 @@ abstract class Gauge constructor(
     /** This animatorListener to call [tremble] method when animator done  */
     private val animatorListener = object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator) {
-            if (!canceled)
+            if (!canceled) {
                 tremble()
+            }
+            animationEndListener()
         }
     }
 
