@@ -23,6 +23,9 @@ android {
     }
 
     namespace "com.github.anastr.speedviewlib"
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 File secretPropsFile = project.rootProject.file('local.properties')
