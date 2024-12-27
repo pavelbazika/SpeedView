@@ -5,9 +5,9 @@ apply plugin: 'signing'
 
 android {
     defaultConfig {
-        compileSdk 34
-        minSdkVersion 24
-        targetSdkVersion 34
+        compileSdk rootProject.ext.compileSdkVersion
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
     }
 
     buildTypes {
